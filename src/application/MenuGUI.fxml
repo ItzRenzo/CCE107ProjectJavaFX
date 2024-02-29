@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="311.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuGUIController">
+   <children>
+      <Button fx:id="GarageButton" layoutX="14.0" layoutY="107.0" mnemonicParsing="false" onAction="#GarageButtonClick" text="Your Garage" />
+      <Button fx:id="AccountButton" layoutX="13.0" layoutY="146.0" mnemonicParsing="false" onAction="#AccountButtonClick" text="Account Info" />
+      <Button fx:id="SignOutButton" layoutX="12.0" layoutY="263.0" mnemonicParsing="false" onAction="#SignOutButtonClick" prefHeight="25.0" prefWidth="288.0" text="Sign Out" />
+      <Button fx:id="CloseMenuButton" layoutX="255.0" layoutY="20.0" mnemonicParsing="false" onAction="#CloseMenuButtonClick" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0">
+               <image>
+                  <Image url="@../../Images/close-window.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="HiText" layoutX="13.0" layoutY="66.0" text="Hi, ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

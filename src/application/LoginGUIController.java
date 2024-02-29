@@ -27,6 +27,12 @@ public class LoginGUIController {
     @FXML
     private Button LoginButton;
     
+    private String loggedInUsername;
+    
+    public void setLoggedInUsername(String username) {
+        this.loggedInUsername = username;
+    }
+    
     Connection connection;
     PreparedStatement statement;
     ResultSet resultSet;
@@ -58,30 +64,35 @@ public class LoginGUIController {
         String userText = UserTF.getText();
         String pwdText = PasswordTF.getText();
 
-        if (userText.isEmpty() || pwdText.isEmpty()) {
+        if (userText.isEmpty() || (pwdText.isEmpty() && !showpass.isSelected())) {
             JOptionPane.showMessageDialog(null, "Username or Password is empty");
         } else {
             try (Connection connection = DatabaseHandler.getConnection();
                  PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?")) {
                 statement.setString(1, userText);
-                statement.setString(2, pwdText);
+                
+                if (showpass.isSelected()) {
+                    statement.setString(2, PasswordTF.getPromptText());
+                } else {
+                    statement.setString(2, pwdText);
+                }
 
                 try (ResultSet resultSet = statement.executeQuery()) {
                     if (resultSet.next()) {
-                        JOptionPane.showMessageDialog(null, "Login Successful");
+                        loggedInUsername = resultSet.getString("username");
+                        JOptionPane.showMessageDialog(null, "Login Successful" + " \nWelcome: " + loggedInUsername);
                         
-						try {
-	                        Parent mainRoot;
-							mainRoot = FXMLLoader.load(getClass().getResource("MainGUI.fxml"));
-	                        Scene mainScene = new Scene(mainRoot);
-	                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-	                        stage.setScene(mainScene);
-	                        stage.show();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainGUI.fxml"));
+                        Parent mainRoot = loader.load();
+                        MainGUIController mainGUIController = loader.getController();
+                        mainGUIController.setLoggedInUsername(loggedInUsername);
+                        
+                        Scene mainScene = new Scene(mainRoot);
+                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        stage.setScene(mainScene);
+                        stage.show();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Login Failed Try Again!");
+                        JOptionPane.showMessageDialog(null, "Login Failed. Please try again!");
                         UserTF.setText("");
                         PasswordTF.setText("");
                         UserTF.requestFocus();
@@ -89,7 +100,9 @@ public class LoginGUIController {
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
-                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
+}
