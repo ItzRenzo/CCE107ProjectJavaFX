@@ -48,9 +48,14 @@ public class CarGUI1Controller {
 
     public void setLoggedInUsername(String username) {
         this.loggedInUsername = username;
-        HiText.setVisible(true);
-        HiText.setText("Hi, " + loggedInUsername);
-        SigninButton.setVisible(false);
+        if (loggedInUsername != null) {
+            HiText.setVisible(true);
+            HiText.setText("Hi, " + loggedInUsername);
+            SigninButton.setVisible(false);
+        } else {
+            HiText.setVisible(false);
+            SigninButton.setVisible(true);
+        }
     }
 
     Node button;
@@ -58,6 +63,7 @@ public class CarGUI1Controller {
     @FXML
     public void initialize() {
         button = MenuButton;
+        SigninButton.setVisible(true);
     }
 
 	@FXML
