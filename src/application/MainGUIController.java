@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -22,11 +23,16 @@ public class MainGUIController {
     private Button SigninButton;
     @FXML
     private Button MenuButton;
+	@FXML
+	private Label HiText;
     
 	private String loggedInUsername;
 
     public void setLoggedInUsername(String username) {
         this.loggedInUsername = username;
+        HiText.setVisible(true);
+        HiText.setText("Hi, " + loggedInUsername);
+        SigninButton.setVisible(false);
     }
 
     Node button;
@@ -38,10 +44,12 @@ public class MainGUIController {
 
     @FXML
     public void ShopButtonClick(ActionEvent event) throws IOException {
-        Parent shopRoot = FXMLLoader.load(getClass().getResource("CarGUI1.fxml"));
-        Scene shopScene = new Scene(shopRoot);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CarGUI1.fxml"));
+        Parent root = loader.load();
+        CarGUI1Controller carGUI1Controller = loader.getController();
+        carGUI1Controller.setLoggedInUsername(loggedInUsername);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(shopScene);
+        stage.setScene(new Scene(root));
         stage.show();
     }
 
