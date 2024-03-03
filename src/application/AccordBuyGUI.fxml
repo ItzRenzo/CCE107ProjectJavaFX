@@ -107,7 +107,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label layoutX="1074.0" layoutY="21.0" text="₱ 1,300,000.00" textFill="#da0b0b">
+            <Label fx:id="TotalPrice" layoutX="1074.0" layoutY="21.0" text="₱ 1,300,000.00" textFill="#da0b0b">
                <font>
                   <Font size="36.0" />
                </font>
@@ -123,8 +123,7 @@
             <Label layoutX="664.0" layoutY="98.0" text="Engine &amp; Transmission&#10;Engine Type 2.0 atkinson cycle&#10;Displacement 1993 cc&#10;Max Power 143.016bhp@6200rpm&#10;Max Torque 175Nm@4000&#10;No. of Cylinders 4&#10;Valves Per Cylinder 4&#10;Valve Configuration DOHC&#10;Transmission Type Automatic&#10;Gear Box E-CVT&#10;Mild Hybrid&#10;Drive Type FWD&#10;Fuel &amp; Performance&#10;Fuel Type Petrol&#10;Petrol Mileage ARAI 23.1 kmpl&#10;Petrol Fuel Tank Capacity 60 Litres&#10;Emission Norm Compliance BS IV&#10;&#10;" />
             <Label layoutX="936.0" layoutY="98.0" text="Suspension, Steering &amp; Brakes&#10;Front Suspension&#10;MacPherson Strut with Coil Spring&#10;Rear Suspension&#10;Multi Link with Coil spring&#10;Shock Absorbers Type&#10;Telescopic (Front &amp; Rear)&#10;Steering Type Electric&#10;Steering Column&#10;Tilt &amp; Telescopic&#10;Steering Gear Type&#10;Hydraulic Assisted Rack &amp; Pinion&#10;Turning Radius 5.6 Meters&#10;Front Brake Type Ventilated Disc&#10;Rear Brake Type Disc&#10;&#10;&#10;" />
             <Label layoutX="1169.0" layoutY="98.0" text="Dimensions &amp; Capacity&#10;Length 4933 mm&#10;Width 1849 mm&#10;Height 1464 mm&#10;Seating Capacity 5&#10;Wheel Base 2776 mm&#10;Front Tread 1585 mm&#10;Rear Tread 1590 mm&#10;Kerb Weight 1620 Kg&#10;Gross Weight 1995 Kg&#10;No. of Doors 4&#10;&#10;" />
-            <ComboBox layoutX="896.0" layoutY="538.0" prefWidth="150.0" />
-            <ComboBox layoutX="680.0" layoutY="538.0" prefWidth="150.0" />
+            <ComboBox fx:id="Month" layoutX="680.0" layoutY="538.0" onAction="#MonthCalculate" prefWidth="150.0" />
          </children></AnchorPane>
    </center>
 </BorderPane>

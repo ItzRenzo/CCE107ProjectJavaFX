@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CarGUI1Controller">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HiluxBuyGUIController">
    <top>
       <AnchorPane prefHeight="96.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <children>
@@ -107,7 +107,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label layoutX="1074.0" layoutY="21.0" text="₱ 1,300,000.00" textFill="#da0b0b">
+            <Label fx:id="TotalPrice" layoutX="1074.0" layoutY="21.0" text="₱ 1,300,000.00" textFill="#da0b0b">
                <font>
                   <Font size="36.0" />
                </font>
@@ -121,8 +121,7 @@
                   <Font size="14.0" />
                </font></Label>
             <Label layoutX="664.0" layoutY="98.0" text="Engine &amp; Transmission&#10;Engine Type 2.8 L Diesel Engine&#10;Displacement 2755 cc&#10;Max Power 201.15bhp@3000-3400rpm&#10;Max Torque 500Nm@1600-2800rpm&#10;No. of Cylinders 4&#10;Valves Per Cylinder 4&#10;Turbo Charger &#10;Transmission Type Automatic &#10;Gear Box 6-Speed &#10;Drive Type 4WD&#10;&#10;" />
-            <ComboBox layoutX="896.0" layoutY="538.0" prefWidth="150.0" />
-            <ComboBox layoutX="680.0" layoutY="538.0" prefWidth="150.0" />
+            <ComboBox fx:id="Month" layoutX="680.0" layoutY="538.0" onAction="#MonthCalculate" prefWidth="150.0" />
             <Label layoutX="664.0" layoutY="302.0" text="Fuel &amp; Performance&#10;Fuel Type Diesel&#10;Diesel Fuel Tank Capacity 80 Litres&#10;Emission Norm Compliance BS VI 2.0&#10;Top Speed 185 kmph&#10;&#10;" />
             <Label layoutX="897.0" layoutY="98.0" text="Suspension, Steering &amp; Brakes&#10;Front Suspension Double wishbone&#10;Rear Suspension leaf spring&#10;Steering Type Electric&#10;Steering Column&#10;Tilt &amp; Telescopic&#10;Turning Radius&#10;6.4 Metres&#10;Front Brake Type&#10;Ventilated Disc&#10;Rear Brake Type&#10;Drum&#10;&#10;" />
             <Label layoutX="1113.0" layoutY="98.0" text="Dimensions &amp; Capacity&#10;Length 5325 mm&#10;Width 1855 mm&#10;Height 1865 mm&#10;Seating Capacity 5&#10;Wheel Base 2807 mm&#10;Gross Weight 2910mm Kg&#10;No. of Doors 4&#10;&#10;" />

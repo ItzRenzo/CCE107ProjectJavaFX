@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CarGUI1Controller">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RangerBuyGUIController">
    <top>
       <AnchorPane prefHeight="96.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <children>
@@ -107,7 +107,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label layoutX="1074.0" layoutY="21.0" text="₱ 3,000,000.00" textFill="#da0b0b">
+            <Label fx:id="TotalPrice" layoutX="1074.0" layoutY="21.0" text="₱ 3,000,000.00" textFill="#da0b0b">
                <font>
                   <Font size="36.0" />
                </font>
@@ -121,8 +121,7 @@
                   <Font size="18.0" />
                </font></Label>
             <Label layoutX="664.0" layoutY="98.0" text="Engine&#10;2.0L Diesel Engine, 4 Cylinder 16 Valve&#10;No Of Cylinders 4&#10;Valves Per Cylinder 4&#10;Emission Norm Compliance&#10;Euro 4&#10;Turbocharger/Supercharger&#10;Turbocharged&#10;&#10;" />
-            <ComboBox layoutX="896.0" layoutY="538.0" prefWidth="150.0" />
-            <ComboBox layoutX="680.0" layoutY="538.0" prefWidth="150.0" />
+            <ComboBox fx:id="Month" layoutX="680.0" layoutY="538.0" onAction="#MonthCalculate" prefWidth="150.0" />
             <Label layoutX="664.0" layoutY="264.0" text="Fuel Type&#10;Diesel&#10;Engine Displacement 1996 cc&#10;Power 168 hp&#10;Torque 405 Nm&#10;RPM At Max Power 3500 RPM&#10;RPM At Max Torque&#10;1750-2500 RPM&#10;" />
             <Label layoutX="1094.0" layoutY="98.0" text="Front Brake Type Ventilated Discs&#10;Rear Brake Type Drums&#10;Front Suspension Double Wishbone&#10;Rear Suspension Leaf Springs&#10;Shock Absorbers  Type Coil Spring&#10;&#10;" />
             <Label layoutX="1093.0" layoutY="285.0" text="Alloy Wheels Yes&#10;Wheel Covers No&#10;Alloy Wheel Size 16 Inch&#10;Tyre Size 255/70 R16&#10;Tyre Type Radial&#10;Wheel Size R16&#10;Spare Tyre Size 255/70 R16&#10;Spare Tyre Material Alloy&#10;&#10;" />

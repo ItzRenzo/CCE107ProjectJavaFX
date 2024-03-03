@@ -106,7 +106,7 @@
                         <Font size="36.0" />
                     </font>
                 </Label>
-                <Label layoutX="1070.0" layoutY="20.0" prefHeight="53.0" prefWidth="268.0" text="₱ 1,135,000.00" textFill="#ee0b0b">
+                <Label fx:id="TotalPrice" layoutX="1070.0" layoutY="20.0" prefHeight="53.0" prefWidth="268.0" text="₱ 1,135,000.00" textFill="#ee0b0b">
                     <font>
                         <Font size="36.0" />
                     </font>
@@ -131,8 +131,7 @@
                         <Font size="13.0" />
                     </font>
                 </Label>
-                <ComboBox layoutX="896.0" layoutY="538.0" prefWidth="150.0" />
-                <ComboBox layoutX="680.0" layoutY="538.0" prefWidth="150.0" />
+                <ComboBox fx:id="Month" layoutX="680.0" layoutY="538.0" onAction="#MonthCalculate" prefWidth="150.0" />
             <Label layoutX="1035.0" layoutY="98.0" text="Transmission&#10;&#10;Transmission - CVT&#10;&#10;Power Transmission - CVT&#10;&#10;Function&#10;&#10;Keyless Entry - Smart Entry&#10;&#10;Ignition System - Push Start&#10;&#10;Cruise Control - Dynamic Radar Cruise Control&#10;&#10;Chassis&#10;&#10;Front Brake/ Rear Brake - Ventilated Discs / Solid Discs&#10;&#10;Wheels (size) - 225/45 R17 Alloy - GR-S Design">
                <font>
                   <Font size="13.0" />

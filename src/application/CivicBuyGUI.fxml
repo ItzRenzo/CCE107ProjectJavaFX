@@ -107,7 +107,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label layoutX="1074.0" layoutY="21.0" text="₱ 1,600,000.00" textFill="#da0b0b">
+            <Label fx:id="TotalPrice" layoutX="1074.0" layoutY="21.0" text="₱ 1,600,000.00" textFill="#da0b0b">
                <font>
                   <Font size="36.0" />
                </font>
@@ -122,8 +122,7 @@
                </font></Label>
             <Label layoutX="664.0" layoutY="98.0" text="Engine &amp; Transmission&#10;Engine Type 1.6-litre i-DTEC diesel&#10;Displacement 1597 cc&#10;Max Power 118bhp@4000rpm&#10;Max Torque 300Nm@2000rpm&#10;No. of Cylinders 4&#10;Valves Per Cylinder 4&#10;Valve Configuration DOHC&#10;Fuel Supply System CRDi&#10;Transmission Type Manual&#10;Gear Box 6 Speed&#10;Drive Type FWD&#10;&#10;Fuel &amp; Performance&#10;Fuel Type Diesel&#10;Diesel Mileage ARAI 26.8 kmpl&#10;Diesel Fuel Tank Capacity 47 Litres&#10;Emission Norm Compliance BS IV&#10;" />
             <Label layoutX="875.0" layoutY="98.0" text="Suspension, Steering &amp; Brakes&#10;Front Suspension&#10;McPherson Strut&#10;Rear Suspension&#10;Independent Multilink&#10;Steering Type Power&#10;Steering Column&#10;Tilt &amp; Telescopic&#10;Steering Gear Type&#10;Rack &amp; Pinion&#10;Turning Radius&#10;5.85 m Metres&#10;Front Brake Type Disc&#10;Rear Brake Type Disc&#10;&#10;&#10;" />
-            <ComboBox layoutX="896.0" layoutY="538.0" prefWidth="150.0" />
-            <ComboBox layoutX="680.0" layoutY="538.0" prefWidth="150.0" />
+            <ComboBox fx:id="Month" layoutX="680.0" layoutY="538.0" onAction="#MonthCalculate" prefWidth="150.0" />
             <Label layoutX="1066.0" layoutY="98.0" text="Dimensions &amp; Capacity&#10;Length 4656 mm&#10;Width 1799 mm&#10;Height 1433 mm&#10;Seating Capacity 5&#10;Wheel Base 2700 mm&#10;Kerb Weight 1353 Kg&#10;No. of Doors 4&#10;" />
          </children></AnchorPane>
    </center>

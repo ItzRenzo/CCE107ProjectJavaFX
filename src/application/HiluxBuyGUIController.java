@@ -7,12 +7,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -26,7 +29,11 @@ public class HiluxBuyGUIController {
 	private Label HiText;
 	@FXML
 	private Button HomeButton;
-
+	@FXML
+	private Label TotalPrice;
+	@FXML
+	private ComboBox<String> Month;
+	
 	private String loggedInUsername;
 
     public void setLoggedInUsername(String username) {
@@ -43,10 +50,13 @@ public class HiluxBuyGUIController {
 
     Node button;
 
-    @FXML
+	@FXML
     public void initialize() {
-        button = MenuButton;
-        SigninButton.setVisible(true);
+	    button = MenuButton;
+	    SigninButton.setVisible(true);
+	    Month.getItems().removeAll(Month.getItems());
+	    Month.getItems().addAll("No Installment", "12 Months", "18 Months", "24 Months", "36 Months", "48 Months", "60 Months");
+	    Month.getSelectionModel().select("No Installment");
     }
 
 	// Event Listener on Button[#MenuButton].onAction
@@ -93,5 +103,29 @@ public class HiluxBuyGUIController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	@FXML
+	public void MonthCalculate(ActionEvent event) {
+	    String selectedMonth = Month.getSelectionModel().getSelectedItem();
+	    if (selectedMonth != null && !selectedMonth.isEmpty()) {
+	        if (selectedMonth.equals("No Installment")) {
+	            // Reset the TotalPrice to the original price
+	            TotalPrice.setText("₱1,135,000.00");
+	            TotalPrice.setFont(Font.font("System", 36));
+	        } else {
+	            TotalPrice.setFont(Font.font("System", 26));
+	            String[] monthParts = selectedMonth.split(" ");
+	            int months = Integer.parseInt(monthParts[0]);
+	            double totalPrice = 1135000;
+	            double monthlyPayment = totalPrice / months;
+
+	            // Format the monthly payment to two decimal places
+	            DecimalFormat df = new DecimalFormat("#.00");
+	            String formattedMonthlyPayment = "₱ " + df.format(monthlyPayment) + " / month";
+
+	            // Display the formatted monthly payment
+	            TotalPrice.setText(formattedMonthlyPayment);
+	        }
+	    }
 	}
 }
