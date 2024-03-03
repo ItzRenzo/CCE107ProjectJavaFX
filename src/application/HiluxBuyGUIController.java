@@ -110,13 +110,13 @@ public class HiluxBuyGUIController {
 	    if (selectedMonth != null && !selectedMonth.isEmpty()) {
 	        if (selectedMonth.equals("No Installment")) {
 	            // Reset the TotalPrice to the original price
-	            TotalPrice.setText("₱1,135,000.00");
+	            TotalPrice.setText("₱2,166,000.00");
 	            TotalPrice.setFont(Font.font("System", 36));
 	        } else {
 	            TotalPrice.setFont(Font.font("System", 26));
 	            String[] monthParts = selectedMonth.split(" ");
 	            int months = Integer.parseInt(monthParts[0]);
-	            double totalPrice = 1135000;
+	            double totalPrice = 2166000;
 	            double monthlyPayment = totalPrice / months;
 
 	            // Format the monthly payment to two decimal places

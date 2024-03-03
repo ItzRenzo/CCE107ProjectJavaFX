@@ -107,7 +107,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="TotalPrice" layoutX="1074.0" layoutY="21.0" text="₱ 1,300,000.00" textFill="#da0b0b">
+            <Label fx:id="TotalPrice" layoutX="1074.0" layoutY="21.0" text="₱ 2,166,000.00" textFill="#da0b0b">
                <font>
                   <Font size="36.0" />
                </font>

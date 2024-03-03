@@ -110,13 +110,13 @@ public class RangerBuyGUIController {
 	    if (selectedMonth != null && !selectedMonth.isEmpty()) {
 	        if (selectedMonth.equals("No Installment")) {
 	            // Reset the TotalPrice to the original price
-	            TotalPrice.setText("₱1,135,000.00");
+	            TotalPrice.setText("₱3,000,000.00");
 	            TotalPrice.setFont(Font.font("System", 36));
 	        } else {
 	            TotalPrice.setFont(Font.font("System", 26));
 	            String[] monthParts = selectedMonth.split(" ");
 	            int months = Integer.parseInt(monthParts[0]);
-	            double totalPrice = 1135000;
+	            double totalPrice = 3000000;
 	            double monthlyPayment = totalPrice / months;
 
 	            // Format the monthly payment to two decimal places
