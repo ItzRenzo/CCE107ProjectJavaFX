@@ -29,7 +29,7 @@
         </ImageView>
     </graphic>
 </Button>
-            <Button fx:id="SigninButton" layoutX="1233.0" layoutY="36.0" mnemonicParsing="false" text="Sign In" />
+            <Button fx:id="SigninButton" layoutX="1233.0" layoutY="36.0" mnemonicParsing="false" onAction="#SigninButtonClick" text="Sign In" />
               <Label fx:id="HiText" layoutX="1195.0" layoutY="39.0" prefHeight="20.0" prefWidth="102.0" text="Hi, " visible="false">
                <font>
                   <Font size="18.0" />
@@ -84,16 +84,29 @@
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../Images/user.png" />
+                              <Image url="@../../Images/AccordFront.jpg" />
                            </image>
                         </ImageView>
-                        <Button layoutX="14.0" layoutY="171.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Shop Now" />
+                        <Button fx:id="AccordShopButton" layoutX="14.0" layoutY="171.0" mnemonicParsing="false" onAction="#AccordShopButtonClick" style="-fx-background-color: transparent;" text="Shop Now" />
+                        <Label layoutX="17.0" layoutY="150.0" prefHeight="17.0" prefWidth="68.0" text="ACCORD">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="254.0" layoutY="31.0" prefHeight="210.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button layoutX="16.0" layoutY="170.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Shop Now" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/CivicFront.jpg" />
+                           </image></ImageView>
+                        <Button fx:id="CivicShopButton" layoutX="16.0" layoutY="170.0" mnemonicParsing="false" onAction="#CivicShopButtonClick" style="-fx-background-color: transparent;" text="Shop Now" />
+                        <Label layoutX="17.0" layoutY="150.0" text="CIVIC">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>
@@ -102,14 +115,30 @@
                <children>
                   <AnchorPane layoutX="36.0" layoutY="31.0" prefHeight="210.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button layoutX="14.0" layoutY="171.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Shop Now" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/RangerFront.jpg" />
+                           </image></ImageView>
+                        <Button fx:id="RangerShopButton" layoutX="14.0" layoutY="171.0" mnemonicParsing="false" onAction="#RangerShopButtonClick" style="-fx-background-color: transparent;" text="Shop Now" />
+                        <Label layoutX="17.0" layoutY="150.0" prefHeight="21.0" prefWidth="119.0" text="FORD RANGER">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="254.0" layoutY="31.0" prefHeight="210.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button layoutX="16.0" layoutY="170.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Shop Now" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/HiluxFront.png" />
+                           </image></ImageView>
+                        <Button fx:id="HiluxShopButton" layoutX="16.0" layoutY="170.0" mnemonicParsing="false" onAction="#HiluxShopButtonClick" style="-fx-background-color: transparent;" text="Shop Now" />
+                        <Label layoutX="17.0" layoutY="150.0" text="TOYOTA HILUX">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>

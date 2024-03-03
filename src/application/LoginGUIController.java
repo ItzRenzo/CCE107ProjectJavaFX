@@ -86,11 +86,14 @@ public class LoginGUIController {
                         Parent mainRoot = loader.load();
                         MainGUIController mainGUIController = loader.getController();
                         mainGUIController.setLoggedInUsername(loggedInUsername);
+                        mainGUIController.saveMainGUIPosition(); // Save the position and size of MainGUI
                         
                         Scene mainScene = new Scene(mainRoot);
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         stage.setScene(mainScene);
                         stage.show();
+                        // Call the showMainGUI() method after the MainGUI window is loaded and shown
+                        mainGUIController.showMainGUI();
                     } else {
                         JOptionPane.showMessageDialog(null, "Login Failed. Please try again!");
                         UserTF.setText("");

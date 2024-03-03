@@ -17,7 +17,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class AccountInfoGUIController {
+public class RangerBuyGUIController {
 	@FXML
 	private Button MenuButton;
 	@FXML
@@ -26,60 +26,29 @@ public class AccountInfoGUIController {
 	private Label HiText;
 	@FXML
 	private Button HomeButton;
-	@FXML
-	private Label UserText;
-	@FXML
-	private Label EmailText;
-	@FXML
-	private Label PasswordText;
-	@FXML
-	private Label AccountIDText;
-	
+
 	private String loggedInUsername;
-	
-    private String retrievedUsername;
-    private String email;
-    private String password;
-    private String id;
 
     public void setLoggedInUsername(String username) {
         this.loggedInUsername = username;
-        HiText.setVisible(true);
-        HiText.setText("Hi, " + loggedInUsername);
-        SigninButton.setVisible(false);
-
-        loadAccountInfo(loggedInUsername); // Call loadAccountInfo here
+        if (loggedInUsername != null) {
+            HiText.setVisible(true);
+            HiText.setText("Hi, " + loggedInUsername);
+            SigninButton.setVisible(false);
+        } else {
+            HiText.setVisible(false);
+            SigninButton.setVisible(true);
+        }
     }
 
     Node button;
 
-    public void loadAccountInfo(String loggedInUsername) {
-        // Get the user data from the database
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        String[] userData = databaseHandler.getUserByUsername(loggedInUsername);
-
-        if (userData != null) {
-            id = userData[0];
-            retrievedUsername = userData[1];
-            email = userData[2];
-            password = userData[3];
-
-            UserText.setText("Username: " + retrievedUsername);
-            EmailText.setText("Email: " + email);
-            AccountIDText.setText("ID: " + id);
-            PasswordText.setText("Password: " + password);
-        } else {
-            // Handle case when user is not found
-            UserText.setText("User not found");
-            EmailText.setText("");
-            AccountIDText.setText("");
-            PasswordText.setText("");
-        }
-        System.out.println("SQL query executed successfully.");
-    }
+    @FXML
     public void initialize() {
-        loadAccountInfo(loggedInUsername);
+        button = MenuButton;
+        SigninButton.setVisible(true);
     }
+
 	// Event Listener on Button[#MenuButton].onAction
     @FXML
     public void MenuButtonClick(ActionEvent event) {
@@ -103,14 +72,14 @@ public class AccountInfoGUIController {
 
             stage.setX(menuX);
             stage.setY(menuY);
-            
+
             stage.show();
-            
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 	// Event Listener on Button[#HomeButton].onAction
+	@FXML
 	public void HomeButtonClick(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainGUI.fxml"));
         Parent root;
@@ -120,7 +89,6 @@ public class AccountInfoGUIController {
 	        mainGUIController.setLoggedInUsername(loggedInUsername);
 	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	        stage.setScene(new Scene(root));
-            stage.setTitle("Alfie Car Dealership");
 	        stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();

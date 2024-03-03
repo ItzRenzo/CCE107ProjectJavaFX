@@ -13,7 +13,7 @@ public class Main extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("MainGUI.fxml"));
 			Scene scene = new Scene(root);
-	        primaryStage.setTitle("Alfie Car Dealership"); // Set the title of the GUI window        primaryStage.setTitle("My GUI"); // Set the title of the GUI window
+	        primaryStage.setTitle("Alfie Car Dealership");
 			
 			primaryStage.setScene(scene);
 			primaryStage.show();

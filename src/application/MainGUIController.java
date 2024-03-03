@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -18,6 +19,8 @@ import javafx.event.ActionEvent;
 
 public class MainGUIController {
     @FXML
+    private BorderPane BorderPaneSize;
+    @FXML
     private Button ShopButton;
     @FXML
     private Button SigninButton;
@@ -27,6 +30,37 @@ public class MainGUIController {
 	private Label HiText;
     
 	private String loggedInUsername;
+	
+    private double mainGUIX;
+    private double mainGUIY;
+    private double mainGUIWidth;
+    private double mainGUIHeight;
+
+    public void saveMainGUIPosition() {
+        // Check if the BorderPane has a scene associated with it
+        Scene scene = BorderPaneSize.getScene();
+        if (scene != null) {
+            // Get the stage from the scene
+            Stage stage = (Stage) scene.getWindow();
+        mainGUIX = stage.getX();
+        mainGUIY = stage.getY();
+        mainGUIWidth = stage.getWidth();
+        mainGUIHeight = stage.getHeight();
+        }
+    }
+
+    public void restoreMainGUIPosition() {
+        Stage stage = (Stage) BorderPaneSize.getScene().getWindow();
+        stage.setX(mainGUIX);
+        stage.setY(mainGUIY);
+        stage.setWidth(mainGUIWidth);
+        stage.setHeight(mainGUIHeight);
+    }
+    
+    public void showMainGUI() {
+        // Call the restoreMainGUIPosition() method after the MainGUI window is shown
+        restoreMainGUIPosition();
+    }
 
     public void setLoggedInUsername(String username) {
         this.loggedInUsername = username;
@@ -56,6 +90,7 @@ public class MainGUIController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+        stage.setTitle("Alfie Car Dealership");
     }
 
     @FXML
