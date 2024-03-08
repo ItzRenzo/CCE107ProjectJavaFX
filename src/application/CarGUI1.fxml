@@ -12,15 +12,15 @@
    <top>
       <AnchorPane prefHeight="96.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="300.0" layoutY="36.0" mnemonicParsing="false" text="Shop" />
-            <Button layoutX="380.0" layoutY="36.0" mnemonicParsing="false" text="Sell Your Car" />
-            <Button layoutX="496.0" layoutY="36.0" mnemonicParsing="false" text="Location" />
+            <Button fx:id="ShopButton" layoutX="300.0" layoutY="33.0" mnemonicParsing="false" onAction="#ShopButtonClick" prefHeight="31.0" prefWidth="80.0" text="CARS" />
+            <Button fx:id="ContactButton" layoutX="500.0" layoutY="33.0" mnemonicParsing="false" onAction="#ContactButtonClick" prefHeight="31.0" prefWidth="80.0" text="CONTACT" />
+            <Button fx:id="LocationButton" layoutX="400.0" layoutY="33.0" mnemonicParsing="false" onAction="#LocationButtonClick" prefHeight="31.0" prefWidth="80.0" text="LOCATIONS" />
             <ImageView fitHeight="79.0" fitWidth="160.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Images/projectlogo.png" />
                </image>
             </ImageView>
-<Button fx:id="MenuButton" layoutX="1305.0" layoutY="36.0" mnemonicParsing="false" onAction="#MenuButtonClick" text="">
+<Button fx:id="MenuButton" layoutX="1305.0" layoutY="33.0" mnemonicParsing="false" onAction="#MenuButtonClick" prefHeight="31.0" text="">
     <graphic>
         <ImageView fitHeight="24" fitWidth="24">
             <image>
@@ -29,23 +29,23 @@
         </ImageView>
     </graphic>
 </Button>
-            <Button fx:id="SigninButton" layoutX="1233.0" layoutY="36.0" mnemonicParsing="false" onAction="#SigninButtonClick" text="Sign In" />
-              <Label fx:id="HiText" layoutX="1195.0" layoutY="39.0" prefHeight="20.0" prefWidth="102.0" text="Hi, " visible="false">
+            <Button fx:id="SigninButton" layoutX="1220.0" layoutY="33.0" mnemonicParsing="false" onAction="#SigninButtonClick" prefHeight="31.0" prefWidth="66.0" text="SIGN IN" />
+              <Label fx:id="HiText" layoutX="1195.0" layoutY="33.0" prefHeight="20.0" prefWidth="102.0" text="Hi, " visible="false">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="HomeButton" layoutX="206.0" layoutY="36.0" mnemonicParsing="false" onAction="#HomeButtonClick" text="Home" />
+            <Button fx:id="HomeButton" layoutX="200.0" layoutY="33.0" mnemonicParsing="false" onAction="#HomeButtonClick" prefHeight="31.0" prefWidth="80.0" text="HOME" />
          </children>
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCDCDC;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="SUVButton" layoutX="67.0" layoutY="61.0" mnemonicParsing="false" onAction="#SUVButtonClick" text="SUV" />
-            <Button fx:id="SedanButton" layoutX="138.0" layoutY="61.0" mnemonicParsing="false" onAction="#SedanButtonClick" text="Sedan" />
-            <Button fx:id="PickupButton" layoutX="213.0" layoutY="61.0" mnemonicParsing="false" onAction="#PickupButtonClick" text="Pickup Truck" />
-            <AnchorPane fx:id="SUVGUI" layoutX="63.0" layoutY="111.0" prefHeight="517.0" prefWidth="1247.0">
+            <Button fx:id="SUVButton" layoutX="63.0" layoutY="61.0" mnemonicParsing="false" onAction="#SUVButtonClick" prefHeight="25.0" prefWidth="100.0" text="SUV" />
+            <Button fx:id="SedanButton" layoutX="200.0" layoutY="61.0" mnemonicParsing="false" onAction="#SedanButtonClick" prefHeight="25.0" prefWidth="100.0" text="SEDAN" />
+            <Button fx:id="PickupButton" layoutX="341.0" layoutY="61.0" mnemonicParsing="false" onAction="#PickupButtonClick" prefHeight="25.0" prefWidth="100.0" text="PICKUP TRUCK" />
+            <AnchorPane fx:id="SUVGUI" layoutX="63.0" layoutY="111.0" prefHeight="477.0" prefWidth="1247.0" style="-fx-background-color: WHITE;">
                <children>
                   <AnchorPane layoutX="36.0" layoutY="31.0" prefHeight="210.0" prefWidth="200.0">
                      <children>
@@ -78,7 +78,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="SedanGUI" layoutX="63.0" layoutY="111.0" prefHeight="517.0" prefWidth="1247.0" visible="false">
+            <AnchorPane fx:id="SedanGUI" layoutX="63.0" layoutY="111.0" prefHeight="477.0" prefWidth="1247.0" style="-fx-background-color: WHITE;" visible="false">
                <children>
                   <AnchorPane layoutX="36.0" layoutY="31.0" prefHeight="210.0" prefWidth="200.0">
                      <children>
@@ -111,7 +111,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="PickUpGUI" layoutX="63.0" layoutY="111.0" prefHeight="517.0" prefWidth="1247.0" visible="false">
+            <AnchorPane fx:id="PickUpGUI" layoutX="63.0" layoutY="111.0" prefHeight="477.0" prefWidth="1247.0" style="-fx-background-color: WHITE;" visible="false">
                <children>
                   <AnchorPane layoutX="36.0" layoutY="31.0" prefHeight="210.0" prefWidth="200.0">
                      <children>

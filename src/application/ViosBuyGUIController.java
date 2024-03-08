@@ -30,9 +30,13 @@ public class ViosBuyGUIController {
 	@FXML
 	private Button HomeButton;
 	@FXML
+	private Button BuyNowButton;
+	@FXML
 	private Label TotalPrice;
 	@FXML
 	private ComboBox<String> Month;
+	
+    private String formattedMonthlyPayment;
 	
 	private String loggedInUsername;
 
@@ -110,7 +114,10 @@ public class ViosBuyGUIController {
 	    if (selectedMonth != null && !selectedMonth.isEmpty()) {
 	        if (selectedMonth.equals("No Installment")) {
 	            // Reset the TotalPrice to the original price
-	            TotalPrice.setText("₱800,000.00");
+	            double totalPrice = 800000;
+	            DecimalFormat df = new DecimalFormat("#,###.00");
+	            formattedMonthlyPayment = "₱" + df.format(totalPrice);
+	            TotalPrice.setText(formattedMonthlyPayment);
 	            TotalPrice.setFont(Font.font("System", 36));
 	        } else {
 	            TotalPrice.setFont(Font.font("System", 26));
@@ -121,11 +128,29 @@ public class ViosBuyGUIController {
 
 	            // Format the monthly payment to two decimal places
 	            DecimalFormat df = new DecimalFormat("#.00");
-	            String formattedMonthlyPayment = "₱ " + df.format(monthlyPayment) + " / month";
+	            formattedMonthlyPayment = "₱" + df.format(monthlyPayment) + " / month";
+	            System.out.println("Formatted Monthly Payment: " + formattedMonthlyPayment);
 
 	            // Display the formatted monthly payment
 	            TotalPrice.setText(formattedMonthlyPayment);
 	        }
 	    }
 	}
+    @FXML
+    public void BuyNowButtonClick(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GarageGUI.fxml"));
+        Parent root;
+        try {
+            root = loader.load();
+            GarageGUIController garageGUIController = loader.getController();
+            garageGUIController.setLoggedInUsername(loggedInUsername);
+            garageGUIController.setFormattedMonthlyPayment(formattedMonthlyPayment); // Pass the formattedMonthlyPayment value
+            garageGUIController.loadCarInfo(1); // Replace 1 with the actual car ID
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

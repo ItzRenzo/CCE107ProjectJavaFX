@@ -111,7 +111,7 @@
                         <Font size="36.0" />
                     </font>
                 </Label>
-                <Button layoutX="1095.0" layoutY="511.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="246.0" text="BUY NOW" textFill="#eb0d0d">
+                <Button fx:id="BuyNowButton" layoutX="1095.0" layoutY="511.0" mnemonicParsing="false" onAction="#BuyNowButtonClick" prefHeight="80.0" prefWidth="246.0" text="BUY NOW" textFill="#eb0d0d">
                     <font>
                         <Font size="36.0" />
                     </font>

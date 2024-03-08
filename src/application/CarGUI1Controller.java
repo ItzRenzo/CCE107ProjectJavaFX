@@ -24,6 +24,12 @@ public class CarGUI1Controller {
 	@FXML
 	private Button MenuButton;
 	@FXML
+	private Button ShopButton;
+	@FXML
+	private Button LocationButton;
+	@FXML
+	private Button ContactButton;
+	@FXML
 	private Label HiText;
 	@FXML
 	private Button ViosShopButton;
@@ -96,6 +102,18 @@ public class CarGUI1Controller {
         
         stage.show();
     }
+    
+    @FXML
+    public void ShopButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CarGUI1.fxml"));
+        Parent root = loader.load();
+        CarGUI1Controller carGUI1Controller = loader.getController();
+        carGUI1Controller.setLoggedInUsername(loggedInUsername);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.setTitle("Alfie Car Dealership");
+    }
 
 	@FXML
 	public void HomeButtonClick(ActionEvent event) {
@@ -141,6 +159,17 @@ public class CarGUI1Controller {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+    public void LocationButtonClick(ActionEvent event) {
+    	
+    }
+    
+    @FXML
+    public void ContactButtonClick(ActionEvent event) {
+    	
+    }
+    
 	// Event Listener on Button[#SUVButton].onAction
 	@FXML
 	public void SUVButtonClick(ActionEvent event) {

@@ -45,4 +45,28 @@ public class DatabaseHandler {
         }
         return null; // User not found
     }
+    
+    public String[] getCar(String username) {
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT carid, carname, cardesc, carprice, cartype FROM cars WHERE username = ?")) {
+            statement.setString(1, username);
+
+            System.out.println("Executing SQL query...");
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    String carId = String.valueOf(resultSet.getInt("carid"));
+                    String carName = resultSet.getString("carname");
+                    String carDesc = resultSet.getString("cardesc");
+                    String carPrice = resultSet.getString("carprice");
+                    String carType = resultSet.getString("cartype");
+
+                    return new String[]{carId, carName, carDesc, carPrice, carType};
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Car not found
+    }
 }

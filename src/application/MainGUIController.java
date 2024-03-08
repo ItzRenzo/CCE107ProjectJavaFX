@@ -21,9 +21,15 @@ public class MainGUIController {
     @FXML
     private BorderPane BorderPaneSize;
     @FXML
+    private Button HomeButton;
+    @FXML
     private Button ShopButton;
     @FXML
     private Button SigninButton;
+    @FXML
+    private Button LocationButton;
+    @FXML
+    private Button ContactButton;
     @FXML
     private Button MenuButton;
 	@FXML
@@ -143,5 +149,19 @@ public class MainGUIController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    public void HomeButtonClick(ActionEvent event) {
+    	
+    }
+    
+    @FXML
+    public void LocationButtonClick(ActionEvent event) {
+    	
+    }
+    
+    @FXML
+    public void ContactButtonClick(ActionEvent event) {
+    	
     }
 }
