@@ -12,15 +12,15 @@
    <top>
       <AnchorPane prefHeight="96.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="300.0" layoutY="36.0" mnemonicParsing="false" text="Shop" />
-            <Button layoutX="380.0" layoutY="36.0" mnemonicParsing="false" text="Sell Your Car" />
-            <Button layoutX="496.0" layoutY="36.0" mnemonicParsing="false" text="Location" />
+            <Button fx:id="ShopButton" layoutX="300.0" layoutY="33.0" mnemonicParsing="false" onAction="#ShopButtonClick" prefHeight="31.0" prefWidth="80.0" text="CARS" />
+            <Button layoutX="400.0" layoutY="33.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" text="LOCATIONS" />
+            <Button layoutX="500.0" layoutY="33.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" text="CONTACT" />
             <ImageView fitHeight="79.0" fitWidth="160.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Images/projectlogo.png" />
                </image>
             </ImageView>
-<Button fx:id="MenuButton" layoutX="1305.0" layoutY="36.0" mnemonicParsing="false" onAction="#MenuButtonClick" text="">
+<Button fx:id="MenuButton" layoutX="1305.0" layoutY="33.0" mnemonicParsing="false" onAction="#MenuButtonClick" prefHeight="31.0" text="">
     <graphic>
         <ImageView fitHeight="24" fitWidth="24">
             <image>
@@ -29,18 +29,18 @@
         </ImageView>
     </graphic>
 </Button>
-            <Button fx:id="SigninButton" layoutX="1233.0" layoutY="36.0" mnemonicParsing="false" text="Sign In" />
+            <Button fx:id="SigninButton" layoutX="1220.0" layoutY="33.0" mnemonicParsing="false" onAction="#SigninButtonClick" prefHeight="31.0" prefWidth="66.0" text="SIGN IN" />
               <Label fx:id="HiText" layoutX="1195.0" layoutY="39.0" prefHeight="20.0" prefWidth="102.0" text="Hi, " visible="false">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="HomeButton" layoutX="206.0" layoutY="36.0" mnemonicParsing="false" onAction="#HomeButtonClick" text="Home" />
+            <Button fx:id="HomeButton" layoutX="200.0" layoutY="33.0" mnemonicParsing="false" onAction="#HomeButtonClick" prefHeight="31.0" prefWidth="80.0" text="HOME" />
          </children>
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCDCDC;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="14.0" layoutY="14.0" text="Account Info">
                <font>

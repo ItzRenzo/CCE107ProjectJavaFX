@@ -23,6 +23,8 @@ public class AccountInfoGUIController {
 	@FXML
 	private Button SigninButton;
 	@FXML
+	private Button ShopButton;
+	@FXML
 	private Label HiText;
 	@FXML
 	private Button HomeButton;
@@ -44,11 +46,15 @@ public class AccountInfoGUIController {
 
     public void setLoggedInUsername(String username) {
         this.loggedInUsername = username;
-        HiText.setVisible(true);
-        HiText.setText("Hi, " + loggedInUsername);
-        SigninButton.setVisible(false);
-
         loadAccountInfo(loggedInUsername); // Call loadAccountInfo here
+        if (loggedInUsername != null) {
+            HiText.setVisible(true);
+            HiText.setText("Hi, " + loggedInUsername);
+            SigninButton.setVisible(false);
+        } else {
+            HiText.setVisible(false);
+            SigninButton.setVisible(true);
+        }
     }
 
     Node button;
@@ -80,6 +86,42 @@ public class AccountInfoGUIController {
     public void initialize() {
         loadAccountInfo(loggedInUsername);
     }
+    
+    @FXML
+    public void ShopButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CarGUI1.fxml"));
+        Parent root = loader.load();
+        CarGUI1Controller carGUI1Controller = loader.getController();
+        carGUI1Controller.setLoggedInUsername(loggedInUsername);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.setTitle("Alfie Car Dealership");
+    }
+    
+    @FXML
+    public void SigninButtonClick(ActionEvent event) throws IOException {
+        Parent loginRoot = FXMLLoader.load(getClass().getResource("LoginGUI.fxml"));
+        Scene loginScene = new Scene(loginRoot);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(loginScene);
+        
+        // Get the dimensions of the screen
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+        // Calculate the position of the window to center it on the screen
+        double windowWidth = loginScene.getWindow().getWidth();
+        double windowHeight = loginScene.getWindow().getHeight();
+        double windowX = (screenBounds.getWidth() - windowWidth) / 2;
+        double windowY = (screenBounds.getHeight() - windowHeight) / 2;
+
+        // Set the position of the window
+        stage.setX(windowX);
+        stage.setY(windowY);
+        
+        stage.show();
+    }
+    
 	// Event Listener on Button[#MenuButton].onAction
     @FXML
     public void MenuButtonClick(ActionEvent event) {

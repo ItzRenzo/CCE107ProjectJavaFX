@@ -9,8 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="311.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuGUIController">
    <children>
-      <Button fx:id="GarageButton" layoutX="14.0" layoutY="107.0" mnemonicParsing="false" onAction="#GarageButtonClick" text="Your Garage" />
-      <Button fx:id="AccountButton" layoutX="13.0" layoutY="146.0" mnemonicParsing="false" onAction="#AccountButtonClick" text="Account Info" />
+      <Button fx:id="AccountButton" layoutX="14.0" layoutY="107.0" mnemonicParsing="false" onAction="#AccountButtonClick" text="Account Info" />
       <Button fx:id="SignOutButton" layoutX="12.0" layoutY="263.0" mnemonicParsing="false" onAction="#SignOutButtonClick" prefHeight="25.0" prefWidth="288.0" text="Sign Out" />
       <Button fx:id="CloseMenuButton" layoutX="255.0" layoutY="20.0" mnemonicParsing="false" onAction="#CloseMenuButtonClick" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: transparent;">
          <graphic>
