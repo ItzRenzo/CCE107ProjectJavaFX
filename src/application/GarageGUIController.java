@@ -27,6 +27,14 @@ public class GarageGUIController {
     @FXML
     private Button SigninButton;
     @FXML
+    private Button ShopButton;
+    @FXML
+    private Button LocationButton;
+    @FXML
+    private Button ContactButton;
+    @FXML
+    private Button PayButton;
+    @FXML
     private Label HiText;
     @FXML
     private Button HomeButton;
@@ -79,6 +87,18 @@ public class GarageGUIController {
 			e.printStackTrace();
 		}
 	}
+	
+    @FXML
+    public void ShopButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CarGUI1.fxml"));
+        Parent root = loader.load();
+        CarGUI1Controller carGUI1Controller = loader.getController();
+        carGUI1Controller.setLoggedInUsername(loggedInUsername);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.setTitle("Alfie Car Dealership");
+    }
 	
     @FXML
     public void SigninButtonClick(ActionEvent event) throws IOException {
@@ -192,5 +212,59 @@ public class GarageGUIController {
     	        System.out.println("Error executing SQL query: " + e.getMessage());
     	    }
     	}
+     @FXML
+     public void PayButtonClick(ActionEvent event) {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("TransitGUI.fxml"));
+         Parent root;
+ 		try {
+ 			root = loader.load();
+ 	        TransitGUIController transitGUIController = loader.getController();
+ 	        transitGUIController.setLoggedInUsername(loggedInUsername);
+ 	        
+ 	        // Pass userInfo and carInfo
+ 	        String userInfo = InfoTXT.getText();
+ 	        String carInfo = DescriptionTXT.getText();
+ 	        transitGUIController.setUserInfo(userInfo);
+ 	        transitGUIController.setCarInfo(carInfo);
+ 	        
+ 	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+ 	        stage.setScene(new Scene(root));
+ 	        stage.show();
+ 		} catch (IOException e) {
+ 			e.printStackTrace();
+ 		}
+     }
+     
+     @FXML
+     public void LocationButtonClick(ActionEvent event) {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("LocationGUI.fxml"));
+         Parent root;
+ 		try {
+ 			root = loader.load();
+ 	        LocationGUIController locationGUIController = loader.getController();
+ 	        locationGUIController.setLoggedInUsername(loggedInUsername);
+ 	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+ 	        stage.setScene(new Scene(root));
+ 	        stage.show();
+ 		} catch (IOException e) {
+ 			e.printStackTrace();
+ 		}
+     }
+     
+     @FXML
+     public void ContactButtonClick(ActionEvent event) {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("ContactGUI.fxml"));
+         Parent root;
+ 		try {
+ 			root = loader.load();
+ 	        ContactGUIController contactGUIController = loader.getController();
+ 	        contactGUIController.setLoggedInUsername(loggedInUsername);
+ 	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+ 	        stage.setScene(new Scene(root));
+ 	        stage.show();
+ 		} catch (IOException e) {
+ 			e.printStackTrace();
+ 		}
+     }
 }
 

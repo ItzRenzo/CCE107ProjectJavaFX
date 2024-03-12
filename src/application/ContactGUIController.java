@@ -7,45 +7,39 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 
 import java.io.IOException;
-import java.text.DecimalFormat;
 
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
-import javafx.scene.text.Font;
+
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class AccordBuyGUIController {
+public class ContactGUIController {
 	@FXML
-	private Button MenuButton;
-	@FXML
-	private Button SigninButton;
+	private BorderPane BorderPaneSize;
 	@FXML
 	private Button ShopButton;
 	@FXML
 	private Button LocationButton;
 	@FXML
-	private Button ContactButton;
+	private Button MenuButton;
+	@FXML
+	private Button SigninButton;
 	@FXML
 	private Label HiText;
 	@FXML
 	private Button HomeButton;
 	@FXML
-	private Button BuyNowButton;
-	@FXML
-	private Label TotalPrice;
-	@FXML
-	private ComboBox<String> Month;
+	private Button ContactButton;
 	
 	private String loggedInUsername;
-	
-    private String formattedMonthlyPayment;
 
+	
     public void setLoggedInUsername(String username) {
         this.loggedInUsername = username;
         if (loggedInUsername != null) {
@@ -60,15 +54,12 @@ public class AccordBuyGUIController {
 
     Node button;
 
-	@FXML
+    @FXML
     public void initialize() {
-	    button = MenuButton;
-	    SigninButton.setVisible(true);
-	    Month.getItems().removeAll(Month.getItems());
-	    Month.getItems().addAll("No Installment", "12 Months", "18 Months", "24 Months", "36 Months", "48 Months", "60 Months");
-	    Month.getSelectionModel().select("No Installment");
+        button = MenuButton;
     }
-	
+    
+	// Event Listener on Button[#ShopButton].onAction
     @FXML
     public void ShopButtonClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CarGUI1.fxml"));
@@ -80,7 +71,7 @@ public class AccordBuyGUIController {
         stage.show();
         stage.setTitle("Alfie Car Dealership");
     }
-    
+
     @FXML
     public void SigninButtonClick(ActionEvent event) throws IOException {
         Parent loginRoot = FXMLLoader.load(getClass().getResource("LoginGUI.fxml"));
@@ -104,7 +95,6 @@ public class AccordBuyGUIController {
         stage.show();
     }
 
-	// Event Listener on Button[#MenuButton].onAction
     @FXML
     public void MenuButtonClick(ActionEvent event) {
         try {
@@ -133,9 +123,8 @@ public class AccordBuyGUIController {
             e.printStackTrace();
         }
     }
-	// Event Listener on Button[#HomeButton].onAction
-	@FXML
-	public void HomeButtonClick(ActionEvent event) {
+    @FXML
+    public void HomeButtonClick(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainGUI.fxml"));
         Parent root;
 		try {
@@ -149,51 +138,6 @@ public class AccordBuyGUIController {
 			e.printStackTrace();
 		}
 	}
-	@FXML
-	public void MonthCalculate(ActionEvent event) {
-	    String selectedMonth = Month.getSelectionModel().getSelectedItem();
-	    if (selectedMonth != null && !selectedMonth.isEmpty()) {
-	        if (selectedMonth.equals("No Installment")) {
-	            // Reset the TotalPrice to the original price
-	            double totalPrice = 1300000;
-	            DecimalFormat df = new DecimalFormat("#,###.00");
-	            formattedMonthlyPayment = "₱" + df.format(totalPrice);
-	            TotalPrice.setText(formattedMonthlyPayment);
-	            TotalPrice.setFont(Font.font("System", 36));
-	        } else {
-	            TotalPrice.setFont(Font.font("System", 26));
-	            String[] monthParts = selectedMonth.split(" ");
-	            int months = Integer.parseInt(monthParts[0]);
-	            double totalPrice = 1300000;
-	            double monthlyPayment = totalPrice / months;
-
-	            // Format the monthly payment to two decimal places
-	            DecimalFormat df = new DecimalFormat("#.00");
-	            formattedMonthlyPayment = "₱" + df.format(monthlyPayment) + " / month";
-	            System.out.println("Formatted Monthly Payment: " + formattedMonthlyPayment);
-
-	            // Display the formatted monthly payment
-	            TotalPrice.setText(formattedMonthlyPayment);
-	        }
-	    }
-	}
-    @FXML
-    public void BuyNowButtonClick(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("GarageGUI.fxml"));
-        Parent root;
-        try {
-            root = loader.load();
-            GarageGUIController garageGUIController = loader.getController();
-            garageGUIController.setLoggedInUsername(loggedInUsername);
-            garageGUIController.setFormattedMonthlyPayment(formattedMonthlyPayment); // Pass the formattedMonthlyPayment value
-            garageGUIController.loadCarInfo(3); // Replace 1 with the actual car ID
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     
     @FXML
     public void LocationButtonClick(ActionEvent event) {

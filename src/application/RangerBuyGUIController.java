@@ -28,6 +28,10 @@ public class RangerBuyGUIController {
 	@FXML
 	private Button ShopButton;
 	@FXML
+	private Button LocationButton;
+	@FXML
+	private Button ContactButton;
+	@FXML
 	private Label HiText;
 	@FXML
 	private Button HomeButton;
@@ -191,5 +195,37 @@ public class RangerBuyGUIController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    @FXML
+    public void LocationButtonClick(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LocationGUI.fxml"));
+        Parent root;
+		try {
+			root = loader.load();
+	        LocationGUIController locationGUIController = loader.getController();
+	        locationGUIController.setLoggedInUsername(loggedInUsername);
+	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	        stage.setScene(new Scene(root));
+	        stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    @FXML
+    public void ContactButtonClick(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ContactGUI.fxml"));
+        Parent root;
+		try {
+			root = loader.load();
+	        ContactGUIController contactGUIController = loader.getController();
+	        contactGUIController.setLoggedInUsername(loggedInUsername);
+	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	        stage.setScene(new Scene(root));
+	        stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 }

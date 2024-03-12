@@ -16,8 +16,8 @@
         <AnchorPane prefHeight="96.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="ShopButton" layoutX="300.0" layoutY="33.0" mnemonicParsing="false" onAction="#ShopButtonClick" prefHeight="31.0" prefWidth="80.0" text="CARS" />
-                <Button layoutX="400.0" layoutY="33.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" text="LOCATIONS" />
-                <Button layoutX="500.0" layoutY="33.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" text="CONTACT" />
+                <Button fx:id="LocationButton" layoutX="400.0" layoutY="33.0" mnemonicParsing="false" onAction="#LocationButtonClick" prefHeight="31.0" prefWidth="80.0" text="LOCATIONS" />
+                <Button fx:id="ContactButton" layoutX="500.0" layoutY="33.0" mnemonicParsing="false" onAction="#ContactButtonClick" prefHeight="31.0" prefWidth="80.0" text="CONTACT" />
                 <ImageView fitHeight="79.0" fitWidth="160.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../Images/projectlogo.png" />
