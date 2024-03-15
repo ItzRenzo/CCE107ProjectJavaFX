@@ -80,7 +80,7 @@ public class LoginGUIController {
                 try (ResultSet resultSet = statement.executeQuery()) {
                     if (resultSet.next()) {
                         loggedInUsername = resultSet.getString("username");
-                        JOptionPane.showMessageDialog(null, "Login Successful" + " \nWelcome: " + loggedInUsername);
+                        JOptionPane.showMessageDialog(null, "Login Successful");
                         
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainGUI.fxml"));
                         Parent mainRoot = loader.load();

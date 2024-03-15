@@ -13,13 +13,14 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
 
 public class GarageGUIController {
     @FXML
@@ -212,27 +213,32 @@ public class GarageGUIController {
     	        System.out.println("Error executing SQL query: " + e.getMessage());
     	    }
     	}
+
      @FXML
      public void PayButtonClick(ActionEvent event) {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("TransitGUI.fxml"));
-         Parent root;
- 		try {
- 			root = loader.load();
- 	        TransitGUIController transitGUIController = loader.getController();
- 	        transitGUIController.setLoggedInUsername(loggedInUsername);
- 	        
- 	        // Pass userInfo and carInfo
- 	        String userInfo = InfoTXT.getText();
- 	        String carInfo = DescriptionTXT.getText();
- 	        transitGUIController.setUserInfo(userInfo);
- 	        transitGUIController.setCarInfo(carInfo);
- 	        
- 	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
- 	        stage.setScene(new Scene(root));
- 	        stage.show();
- 		} catch (IOException e) {
- 			e.printStackTrace();
- 		}
+         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to proceed?", "Confirm",
+             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+         if (response == JOptionPane.YES_OPTION) {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("TransitGUI.fxml"));
+             Parent root;
+             try {
+                 root = loader.load();
+                 TransitGUIController transitGUIController = loader.getController();
+                 transitGUIController.setLoggedInUsername(loggedInUsername);
+
+                 // Pass userInfo and carInfo
+                 String userInfo = InfoTXT.getText();
+                 String carInfo = DescriptionTXT.getText();
+                 transitGUIController.setUserInfo(userInfo);
+                 transitGUIController.setCarInfo(carInfo);
+
+                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                 stage.setScene(new Scene(root));
+                 stage.show();
+             } catch (IOException e) {
+                 e.printStackTrace();
+             }
+         }
      }
      
      @FXML
