@@ -12,6 +12,8 @@ import javafx.scene.control.ComboBox;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
+import javax.swing.JOptionPane;
+
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -136,14 +138,25 @@ public class ViosBuyGUIController {
 	// Event Listener on Button[#HomeButton].onAction
 	@FXML
 	public void HomeButtonClick(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainGUI.fxml"));
-        Parent root;
 		try {
-			root = loader.load();
-	        MainGUIController mainGUIController = loader.getController();
-	        mainGUIController.setLoggedInUsername(loggedInUsername);
+			Parent loginRoot = FXMLLoader.load(getClass().getResource("LoginGUI.fxml"));
+	        Scene loginScene = new Scene(loginRoot);
 	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-	        stage.setScene(new Scene(root));
+	        stage.setScene(loginScene);
+	        
+	        // Get the dimensions of the screen
+	        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+	        // Calculate the position of the window to center it on the screen
+	        double windowWidth = loginScene.getWindow().getWidth();
+	        double windowHeight = loginScene.getWindow().getHeight();
+	        double windowX = (screenBounds.getWidth() - windowWidth) / 2;
+	        double windowY = (screenBounds.getHeight() - windowHeight) / 2;
+
+	        // Set the position of the window
+	        stage.setX(windowX);
+	        stage.setY(windowY);
+	        
 	        stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -177,23 +190,52 @@ public class ViosBuyGUIController {
 	        }
 	    }
 	}
-    @FXML
-    public void BuyNowButtonClick(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("GarageGUI.fxml"));
-        Parent root;
-        try {
-            root = loader.load();
-            GarageGUIController garageGUIController = loader.getController();
-            garageGUIController.setLoggedInUsername(loggedInUsername);
-            garageGUIController.setFormattedMonthlyPayment(formattedMonthlyPayment); // Pass the formattedMonthlyPayment value
-            garageGUIController.loadCarInfo(1); // Replace 1 with the actual car ID
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	@FXML
+	public void BuyNowButtonClick(ActionEvent event) {
+	    if (loggedInUsername == null || loggedInUsername.isEmpty()) {
+	        // If the user is not logged in, redirect to LoginGUI
+	    	JOptionPane.showMessageDialog(null, "You are not logged in");
+			try {
+				Parent loginRoot = FXMLLoader.load(getClass().getResource("LoginGUI.fxml"));
+		        Scene loginScene = new Scene(loginRoot);
+		        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		        stage.setScene(loginScene);
+		        
+		        // Get the dimensions of the screen
+		        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+		        // Calculate the position of the window to center it on the screen
+		        double windowWidth = loginScene.getWindow().getWidth();
+		        double windowHeight = loginScene.getWindow().getHeight();
+		        double windowX = (screenBounds.getWidth() - windowWidth) / 2;
+		        double windowY = (screenBounds.getHeight() - windowHeight) / 2;
+
+		        // Set the position of the window
+		        stage.setX(windowX);
+		        stage.setY(windowY);
+		        
+		        stage.show();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    } else {
+	        // If the user is logged in, proceed to GarageGUI
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("GarageGUI.fxml"));
+	        Parent root;
+	        try {
+	            root = loader.load();
+	            GarageGUIController garageGUIController = loader.getController();
+	            garageGUIController.setLoggedInUsername(loggedInUsername);
+	            garageGUIController.setFormattedMonthlyPayment(formattedMonthlyPayment); // Pass the formattedMonthlyPayment value
+	            garageGUIController.loadCarInfo(1); // Replace 1 with the actual car ID
+	            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	            stage.setScene(new Scene(root));
+	            stage.show();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	}
     
     @FXML
     public void LocationButtonClick(ActionEvent event) {
