@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Screen;
@@ -43,6 +44,8 @@ public class GarageGUIController {
     private TextArea DescriptionTXT;
     @FXML
     private TextArea InfoTXT;
+	@FXML
+	private ComboBox<String> LocationComboBox;
     
     private String formattedMonthlyPayment = "No Installment";
 
@@ -51,6 +54,11 @@ public class GarageGUIController {
     private static final String JDBC_URL = "jdbc:mysql://185.207.164.129:3306/s6260_CCEProjectData";
     private static final String DB_USERNAME = "u6260_j1v7KCJUuY";
     private static final String DB_PASSWORD = "Yj.!4yj8@HNCfdyplr@XFZG3";
+    
+    
+    public void initialize() {
+        LocationComboBox.getItems().addAll("Davao City", "Makati City");
+    }
     
     public void setCarId(int carId) {
         loadCarInfo(carId);
@@ -184,59 +192,79 @@ public class GarageGUIController {
     }
 
      public void loadCarInfo(int carId) {
-    	    try {
-    	        Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
-    	        String sql = "SELECT carname, cardesc, carprice, cartype FROM cars WHERE carid = ?";
-    	        PreparedStatement statement = connection.prepareStatement(sql);
-    	        statement.setInt(1, carId);
-    	        ResultSet resultSet = statement.executeQuery();
+         try {
+             Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
+             String sql = "SELECT carname, cardesc, carprice, cartype FROM cars WHERE carid = ?";
+             PreparedStatement statement = connection.prepareStatement(sql);
+             statement.setInt(1, carId);
+             ResultSet resultSet = statement.executeQuery();
 
-    	        if (resultSet.next()) {
-    	            String carName = resultSet.getString("carname");
-    	            String carDesc = resultSet.getString("cardesc");
-    	            String carPrice = resultSet.getString("carprice");
-    	            String carType = resultSet.getString("cartype");
+             if (resultSet.next()) {
+                 String carName = resultSet.getString("carname");
+                 String carDesc = resultSet.getString("cardesc");
+                 String carPrice = resultSet.getString("carprice");
+                 String carType = resultSet.getString("cartype");
+                 String location = LocationComboBox.getValue(); // Get the selected location
 
-    	            String carInfo = "Car Name: " + carName + "\n\n"
-    	                    + "Car Type: " + carType + "\n\n"
-    	                    + "Car Description:\n" + carDesc + "\n\n"
-    	                    + "Car Price: ₱" + carPrice + "\n\n"
-    	                    + "Car Installment: " + (formattedMonthlyPayment != null ? formattedMonthlyPayment : "No Installment");
-    	            DescriptionTXT.setText(carInfo);
-    	        } else {
-    	            DescriptionTXT.setText("Car not found");
-    	        }
+                 String carInfo = "Car Name: " + carName + "\n\n"
+                         + "Car Type: " + carType + "\n\n"
+                         + "Car Description:\n" + carDesc + "\n\n"
+                         + "Car Price: ₱" + carPrice + "\n\n"
+                         + "Car Installment: " + (formattedMonthlyPayment != null ? formattedMonthlyPayment : "No Installment")
+                         + "\n\nLocation: " + (location != null ? location : "No location selected"); // Include the location in the carInfo string
+                 DescriptionTXT.setText(carInfo);
+             } else {
+                 DescriptionTXT.setText("Car not found");
+             }
 
-    	        connection.close();
-    	        System.out.println("SQL query executed successfully.");
-    	    } catch (SQLException e) {
-    	        System.out.println("Error executing SQL query: " + e.getMessage());
-    	    }
-    	}
+             connection.close();
+             System.out.println("SQL query executed successfully.");
+         } catch (SQLException e) {
+             System.out.println("Error executing SQL query: " + e.getMessage());
+         }
+     }
+     
+     @FXML
+     public void LocationComboBoxAction(ActionEvent event) {
+         String selectedLocation = LocationComboBox.getValue();
+
+         if (selectedLocation != null && !selectedLocation.isEmpty()) {
+             String carInfo = DescriptionTXT.getText();
+             String updatedCarInfo = carInfo.replaceAll("Location: \\w+.*", "Location: " + selectedLocation);
+             DescriptionTXT.setText(updatedCarInfo);
+         }
+     }
 
      @FXML
      public void PayButtonClick(ActionEvent event) {
-         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to proceed?", "Confirm",
-             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-         if (response == JOptionPane.YES_OPTION) {
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("TransitGUI.fxml"));
-             Parent root;
-             try {
-                 root = loader.load();
-                 TransitGUIController transitGUIController = loader.getController();
-                 transitGUIController.setLoggedInUsername(loggedInUsername);
+         String selectedLocation = LocationComboBox.getValue();
 
-                 // Pass userInfo and carInfo
-                 String userInfo = InfoTXT.getText();
-                 String carInfo = DescriptionTXT.getText();
-                 transitGUIController.setUserInfo(userInfo);
-                 transitGUIController.setCarInfo(carInfo);
+         if (selectedLocation == null || selectedLocation.isEmpty()) {
+             // Display a message to the user indicating that a location needs to be selected
+             JOptionPane.showMessageDialog(null, "Please select a location before proceeding.", "Error", JOptionPane.ERROR_MESSAGE);
+         } else {
+             int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to proceed?", "Confirm",
+                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+             if (response == JOptionPane.YES_OPTION) {
+                 FXMLLoader loader = new FXMLLoader(getClass().getResource("TransitGUI.fxml"));
+                 Parent root;
+                 try {
+                     root = loader.load();
+                     TransitGUIController transitGUIController = loader.getController();
+                     transitGUIController.setLoggedInUsername(loggedInUsername);
 
-                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                 stage.setScene(new Scene(root));
-                 stage.show();
-             } catch (IOException e) {
-                 e.printStackTrace();
+                     // Pass userInfo and carInfo
+                     String userInfo = InfoTXT.getText();
+                     String carInfo = DescriptionTXT.getText();
+                     transitGUIController.setUserInfo(userInfo);
+                     transitGUIController.setCarInfo(carInfo);
+
+                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                     stage.setScene(new Scene(root));
+                     stage.show();
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
              }
          }
      }
