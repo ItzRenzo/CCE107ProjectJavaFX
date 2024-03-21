@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HiluxBuyGUIController">
+   <top>
+      <AnchorPane prefHeight="96.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="ShopButton" layoutX="300.0" layoutY="33.0" mnemonicParsing="false" onAction="#ShopButtonClick" prefHeight="31.0" prefWidth="80.0" text="CARS" />
+            <Button fx:id="LocationButton" layoutX="400.0" layoutY="33.0" mnemonicParsing="false" onAction="#LocationButtonClick" prefHeight="31.0" prefWidth="80.0" text="LOCATIONS" />
+            <Button fx:id="ContactButton" layoutX="500.0" layoutY="33.0" mnemonicParsing="false" onAction="#ContactButtonClick" prefHeight="31.0" prefWidth="80.0" text="CONTACT" />
+            <ImageView fitHeight="79.0" fitWidth="160.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/projectlogo.png" />
+               </image>
+            </ImageView>
+<Button fx:id="MenuButton" layoutX="1305.0" layoutY="33.0" mnemonicParsing="false" onAction="#MenuButtonClick" prefHeight="31.0" text="">
+    <graphic>
+        <ImageView fitHeight="24" fitWidth="24">
+            <image>
+                <Image url="@../../Images/menu.png" />
+            </image>
+        </ImageView>
+    </graphic>
+</Button>
+            <Button fx:id="SigninButton" layoutX="1220.0" layoutY="33.0" mnemonicParsing="false" onAction="#SigninButtonClick" prefHeight="31.0" prefWidth="66.0" text="SIGN IN" />
+              <Label fx:id="HiText" layoutX="1195.0" layoutY="33.0" prefHeight="20.0" prefWidth="102.0" text="Hi, " visible="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="HomeButton" layoutX="200.0" layoutY="33.0" mnemonicParsing="false" onAction="#HomeButtonClick" prefHeight="31.0" prefWidth="80.0" text="HOME" />
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCDCDC;" BorderPane.alignment="CENTER">
+         <children>
+            <TabPane layoutX="14.0" layoutY="87.0" prefHeight="490.0" prefWidth="607.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="LEFT">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="457.0" fitWidth="609.0" layoutX="-1.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/HiluxLeft.jpg" />
+                                 </image></ImageView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="FRONT">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="463.0" fitWidth="608.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/HiluxFront.png" />
+                                 </image></ImageView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="RIGHT">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="463.0" fitWidth="601.0" layoutX="3.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/HiluxRight.jpg" />
+                                 </image></ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="BACK">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="460.0" fitWidth="610.0" layoutX="119.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/HiluxBack.png" />
+                                 </image></ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <Button fx:id="BuyNowButton" layoutX="1095.0" layoutY="511.0" mnemonicParsing="false" onAction="#BuyNowButtonClick" prefHeight="82.0" prefWidth="229.0" text="BUY NOW" textFill="#da0808">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Label layoutX="32.0" layoutY="21.0" text="HILUX">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="TotalPrice" layoutX="1074.0" layoutY="21.0" text="₱ 2,166,000.00" textFill="#da0b0b">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="664.0" layoutY="29.0" text="HILUX">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="664.0" layoutY="60.0" text="Description">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label layoutX="664.0" layoutY="98.0" text="Engine &amp; Transmission&#10;Engine Type 2.8 L Diesel Engine&#10;Displacement 2755 cc&#10;Max Power 201.15bhp@3000-3400rpm&#10;Max Torque 500Nm@1600-2800rpm&#10;No. of Cylinders 4&#10;Valves Per Cylinder 4&#10;Turbo Charger &#10;Transmission Type Automatic &#10;Gear Box 6-Speed &#10;Drive Type 4WD&#10;&#10;" />
+            <ComboBox fx:id="Month" layoutX="680.0" layoutY="538.0" onAction="#MonthCalculate" prefWidth="150.0" />
+            <Label layoutX="664.0" layoutY="302.0" text="Fuel &amp; Performance&#10;Fuel Type Diesel&#10;Diesel Fuel Tank Capacity 80 Litres&#10;Emission Norm Compliance BS VI 2.0&#10;Top Speed 185 kmph&#10;&#10;" />
+            <Label layoutX="897.0" layoutY="98.0" text="Suspension, Steering &amp; Brakes&#10;Front Suspension Double wishbone&#10;Rear Suspension leaf spring&#10;Steering Type Electric&#10;Steering Column&#10;Tilt &amp; Telescopic&#10;Turning Radius&#10;6.4 Metres&#10;Front Brake Type&#10;Ventilated Disc&#10;Rear Brake Type&#10;Drum&#10;&#10;" />
+            <Label layoutX="1113.0" layoutY="98.0" text="Dimensions &amp; Capacity&#10;Length 5325 mm&#10;Width 1855 mm&#10;Height 1865 mm&#10;Seating Capacity 5&#10;Wheel Base 2807 mm&#10;Gross Weight 2910mm Kg&#10;No. of Doors 4&#10;&#10;" />
+         </children></AnchorPane>
+   </center>
+</BorderPane>
