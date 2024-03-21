@@ -227,7 +227,7 @@ public class TransitGUIController {
         properties.put("mail.smtp.starttls.enable", "true");
 
         // Email credentials
-        String senderEmail = "e.bersamin.546349@umindanao.edu.ph";
+        String senderEmail = "e.bersamin@umindanao.edu.ph";
         String password = "";
 
         // Retrieve the recipient's email address from the database
